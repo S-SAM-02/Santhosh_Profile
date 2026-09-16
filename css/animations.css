@@ -1,0 +1,40 @@
+@keyframes floatY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
+@keyframes floatSlow { 0%,100%{transform:translate3d(0,0,0)} 50%{transform:translate3d(0,-20px,0)} }
+@keyframes shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
+@keyframes rise { 0%{transform:translateY(120vh) scale(.4);opacity:0} 10%{opacity:.9} 100%{transform:translateY(-10vh) scale(1);opacity:0} }
+@keyframes spinSlow { to { transform: rotate(360deg) } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+@keyframes goldLine { 0%{background-position:0% 50%} 100%{background-position:200% 50%} }
+
+.reveal { opacity:0; transform: translateY(28px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+.reveal.in { opacity:1; transform: none; }
+.reveal.delay-1 { transition-delay: .08s }
+.reveal.delay-2 { transition-delay: .16s }
+.reveal.delay-3 { transition-delay: .24s }
+
+.animate-fade-up { animation: fadeUp .8s var(--ease) both; }
+.animate-fade-in { animation: fadeIn 1s var(--ease) both; }
+.float { animation: floatY 6s ease-in-out infinite; }
+.float-slow { animation: floatSlow 10s ease-in-out infinite; }
+.spin-slow { animation: spinSlow 22s linear infinite; }
+
+.title-rotator { position: relative; display:inline-block; min-height: 1.2em; overflow: hidden; }
+.title-rotator span {
+  position: absolute; inset: 0;
+  opacity: 0; transform: translateY(20px);
+  transition: opacity .6s var(--ease), transform .6s var(--ease);
+  background: linear-gradient(90deg, var(--gold-deep), var(--gold), var(--gold-soft));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  font-style: italic; white-space: nowrap;
+}
+.title-rotator span.active { opacity:1; transform: translateY(0); }
+.title-rotator span.exit { opacity:0; transform: translateY(-20px); }
+
+/* Gold shimmer line */
+.gold-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  background-size: 200% 100%;
+  animation: goldLine 6s linear infinite;
+}

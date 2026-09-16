@@ -1,0 +1,34 @@
+/* Luxury design tokens — White & Gold */
+:root {
+  --ivory: #FBF8F3;
+  --ivory-2: #F3EEE4;
+  --ink: #1a1613;
+  --ink-soft: #524a41;
+  --gold: #D4AF37;
+  --gold-deep: #A8842A;
+  --gold-soft: #E8CE7A;
+  --line: rgba(26,22,19,0.08);
+  --glass-bg: rgba(255,255,255,0.55);
+  --glass-brd: rgba(255,255,255,0.7);
+  --shadow-soft: 0 20px 60px -20px rgba(26,22,19,.18), 0 6px 18px -8px rgba(26,22,19,.10);
+  --shadow-gold: 0 10px 40px -10px rgba(212,175,55,.45);
+  --radius: 22px;
+  --radius-sm: 12px;
+  --serif: "Cormorant Garamond", "Times New Roman", serif;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --ease: cubic-bezier(.22,.61,.36,1);
+}
+[data-theme="dark"] {
+  --ivory: #0c0a08;
+  --ivory-2: #14110d;
+  --ink: #f5efe2;
+  --ink-soft: #b7ad9a;
+  --gold: #E8CE7A;
+  --gold-deep: #D4AF37;
+  --gold-soft: #F0DFA4;
+  --line: rgba(232,206,122,.14);
+  --glass-bg: rgba(20,17,13,0.55);
+  --glass-brd: rgba(232,206,122,.18);
+  --shadow-soft: 0 24px 60px -20px rgba(0,0,0,.6), 0 6px 18px -8px rgba(0,0,0,.35);
+  --shadow-gold: 0 10px 40px -10px rgba(232,206,122,.35);
+}
