@@ -60,18 +60,32 @@
       ring.querySelector('.bg').setAttribute('r', R);
       ring.querySelector('.bg').setAttribute('cx', 44);
       ring.querySelector('.bg').setAttribute('cy', 44);
-      const io2 = new IntersectionObserver((es)=>{
-        es.forEach(e => {
-          if(e.isIntersecting){
-            fg.style.strokeDashoffset = C * (1 - val/100);
-            let n = 0;
-            const step = Math.max(1, Math.round(val/40));
-            const t = setInterval(()=>{ n = Math.min(val, n+step); ring.querySelector('.val').textContent = n + '%'; if(n>=val) clearInterval(t); }, 24);
-            io2.unobserve(ring);
-          }
-        });
-      }, {threshold: .5});
-      io2.observe(ring);
+      const valueEl = ring.querySelector('.val');
+      // Always start from 0, then reliably animate to the configured value.
+      valueEl.textContent = '0%';
+      const animateRing = () => {
+        fg.style.strokeDashoffset = C * (1 - val/100);
+        let n = 0;
+        const step = Math.max(1, Math.ceil(val/40));
+        const t = setInterval(() => {
+          n = Math.min(val, n + step);
+          valueEl.textContent = n + '%';
+          if(n >= val) clearInterval(t);
+        }, 24);
+      };
+      if('IntersectionObserver' in window){
+        const io2 = new IntersectionObserver((es)=>{
+          es.forEach(e => {
+            if(e.isIntersecting){
+              animateRing();
+              io2.unobserve(ring);
+            }
+          });
+        }, {threshold: 0.05, rootMargin: '0px 0px -40px 0px'});
+        io2.observe(ring);
+      } else {
+        animateRing();
+      }
     });
 
     // Magnetic cursor
