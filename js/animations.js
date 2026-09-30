@@ -62,17 +62,10 @@
       ring.querySelector('.bg').setAttribute('cx', 44);
       ring.querySelector('.bg').setAttribute('cy', 44);
       const valueEl = ring.querySelector('.val');
-      // Always start from 0, then reliably animate to the configured value.
-      valueEl.textContent = '0%';
+      // Keep the actual proficiency score visible; animate only the ring.
+      valueEl.textContent = val + '%';
       const animateRing = () => {
         fg.style.strokeDashoffset = C * (1 - val/100);
-        let n = 0;
-        const step = Math.max(1, Math.ceil(val/40));
-        const t = setInterval(() => {
-          n = Math.min(val, n + step);
-          valueEl.textContent = n + '%';
-          if(n >= val) clearInterval(t);
-        }, 24);
       };
       if('IntersectionObserver' in window){
         const io2 = new IntersectionObserver((es)=>{
