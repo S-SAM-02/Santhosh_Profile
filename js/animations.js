@@ -29,9 +29,10 @@
       let i = 0;
       items[0]?.classList.add('active');
       setInterval(()=>{
-        items[i].classList.remove('active');
-        items[i].classList.add('exit');
-        setTimeout(()=>items[i].classList.remove('exit'), 600);
+        const current = i;
+        items[current].classList.remove('active');
+        items[current].classList.add('exit');
+        setTimeout(()=>items[current].classList.remove('exit'), 600);
         i = (i+1) % items.length;
         items[i].classList.add('active');
       }, 2600);
