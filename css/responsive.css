@@ -22,7 +22,7 @@
 }
 @media (max-width: 560px){
   .nav{top:10px;width:calc(100% - 20px);justify-content:center}
-  .nav .brand{display:none}
+  .nav .brand{display:inline-flex;padding:0 8px;font-size:15px}
   .nav a{padding:7px 8px;font-size:9px;letter-spacing:.05em}
   .theme-toggle{width:31px;height:31px}
   h1{font-size:2.9rem}
